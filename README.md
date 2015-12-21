@@ -1,1 +1,5 @@
-# ae-core
+# AE.Core
+
+Contains abstractions for:
+* Logging 
+* Dependency Injection
