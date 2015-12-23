@@ -35,6 +35,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\IComponentResolver.cs" />
+    <Compile Include="DI\IDependency.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\NullLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,7 +35,26 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainEvent.cs" />
+    <Compile Include="Handlers\DefaultEventHandlerFactory.cs" />
+    <Compile Include="Handlers\EventHandlerBase.cs" />
+    <Compile Include="Services\DefaultEventBus.cs" />
+    <Compile Include="Services\DefaultEventDispatcher.cs" />
+    <Compile Include="Services\DefaultEventsPublisher.cs" />
+    <Compile Include="Services\EventsQueue.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="Services\IEventBus.cs" />
+    <Compile Include="Services\IEventDispatcher.cs" />
+    <Compile Include="Handlers\IEventHandler.cs" />
+    <Compile Include="Handlers\IEventHandlerFactory.cs" />
+    <Compile Include="Services\IEventsPublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AE.Core\AE.Core.csproj">
+      <Project>{0549ef95-5453-4dcd-8397-4e48e61c77c7}</Project>
+      <Name>AE.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

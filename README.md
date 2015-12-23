@@ -21,6 +21,7 @@ Any sugestions will be welocme
 * Only technical problems
 * Messages over RPC
 * Less coupling
+* Async
 
 ## AE.Core
 This is the base for other components with low level abstractions arising from assumptions.  
