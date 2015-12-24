@@ -7,7 +7,7 @@
     public class EventHandlersTests
     {
         [Fact]
-        public void EventHandlerBase_can_resolve_handlers_without_parameters()
+        public void EventHandlerBase_can_resolve_handle_methods_without_parameters_per_call()
         {
             // Arrange
             var eventHandler = new TestHandlers();
