@@ -7,27 +7,38 @@
     public class EventHandlersTests
     {
         [Fact]
-        public void EventHandlerBase_can_resolve_handle_methods_without_parameters_per_call()
+        public void EventHandlerBase_can_resolve_handle_methods_by_matching_event_type()
         {
             // Arrange
             var eventHandler = new TestHandlers();
+            var testEvent = new TestEvent() as IEvent;
 
             // Act
-            eventHandler.Handle(null);
+            eventHandler.Handle(testEvent);
 
             // Assert
-            Assert.True(eventHandler.IsHandled);
+            Assert.Equal(2, eventHandler.HandledCount);
         }
 
 
-        private class TestHandlers : EventHandlerBase
+        private class TestHandlers : EventHandlerBase, IEventHandler<TestEvent>
         {
-            public bool IsHandled { get; private set; }
+            public int HandledCount { get; private set; }
 
-            public void Handle()
+            public void Handle(TestEvent @event)
             {
-                IsHandled = true;
+                this.HandledCount++;
             }
+
+            public override void Handle(IEvent @event)
+            {
+                base.Handle(@event);
+                this.HandledCount++;
+            }
+        }
+
+        private class TestEvent : IEvent
+        {
         }
     }
 }
