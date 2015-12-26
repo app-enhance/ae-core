@@ -27,7 +27,7 @@ namespace AE.Events.Handling
                     }
                     catch (Exception e)
                     {
-                        this.Logger.Error("Execution of event throw exception", e);
+                        this.Logger.Error($"Execution of event throw exception. Event: {typeof(T).Name}", e);
                     }
                 };
 

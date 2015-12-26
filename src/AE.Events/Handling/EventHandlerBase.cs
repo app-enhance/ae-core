@@ -62,6 +62,7 @@
             var method = @interface.GetMethod("Handle");
             if (method == null)
             {
+                // TODO: what if someone create other interface from IEventHandler ?
                 throw new ArgumentException("Incorrect interface type", "@interface");
             }
 
