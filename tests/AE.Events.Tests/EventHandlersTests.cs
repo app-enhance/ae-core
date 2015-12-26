@@ -1,6 +1,6 @@
 ﻿namespace AE.Events.Tests
 {
-    using AE.Events.Handlers;
+    using AE.Events.Handling;
 
     using Xunit;
 

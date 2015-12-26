@@ -1,9 +1,8 @@
-﻿namespace AE.Events.Services
+﻿namespace AE.Events.Collect
 {
     using System.Collections.Concurrent;
     using System.Linq;
     using System.Threading;
-
 
     // TODO: Totaly to refactoring it cannot base on threads
     public static class EventsQueue

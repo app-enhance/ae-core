@@ -1,4 +1,4 @@
-﻿namespace AE.Events.Services
+﻿namespace AE.Events.Distribute
 {
     using AE.Core.DI;
 

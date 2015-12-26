@@ -1,5 +1,7 @@
-namespace AE.Events.Services
+namespace AE.Events.Collect
 {
+    using AE.Events.Distribute;
+
     public class DefaultEventsPublisher : IEventsPublisher
     {
         protected readonly IEventBus eventBus;

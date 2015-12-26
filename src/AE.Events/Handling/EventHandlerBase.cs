@@ -1,4 +1,4 @@
-﻿namespace AE.Events.Handlers
+﻿namespace AE.Events.Handling
 {
     using System;
     using System.Collections.Concurrent;

@@ -1,10 +1,9 @@
-namespace AE.Events.Services
+namespace AE.Events.Handling
 {
     using System;
     using System.Linq;
 
     using AE.Core.Logging;
-    using AE.Events.Handlers;
 
     public class DefaultEventDispatcher : IEventDispatcher
     {

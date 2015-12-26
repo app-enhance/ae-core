@@ -1,4 +1,4 @@
-namespace AE.Events.Handlers
+namespace AE.Events.Handling
 {
     using System.Collections.Generic;
 

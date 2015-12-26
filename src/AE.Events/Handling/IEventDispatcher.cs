@@ -1,4 +1,4 @@
-﻿namespace AE.Events.Services
+﻿namespace AE.Events.Handling
 {
     using AE.Core.DI;
 
