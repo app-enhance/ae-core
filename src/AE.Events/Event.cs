@@ -2,7 +2,6 @@ namespace AE.Events
 {
     using System;
 
-    [Serializable]
     public abstract class Event : IEvent
     {
         protected Event()

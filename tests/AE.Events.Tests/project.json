@@ -1,0 +1,28 @@
+﻿{
+    "version": "0.0.1-*",
+    "description": "AE.Events.Tests Class Library",
+    "authors": [ "Wojtek Gadziński" ],
+    "tags": [ "tests" ],
+    "projectUrl": "https://github.com/app-enhance/ae-core",
+    "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
+    "frameworks": {
+        "dnx46": { },
+        "dnxcore50": { }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/app-enhance/ae-core"
+    },
+    "dependencies": {
+        "AE.Core": "0.0.1-*",
+        "AE.Events": "0.0.1-*",
+        "Newtonsoft.Json": "8.0.1-*",
+        "System.Runtime": "4.0.21-*",
+        "xunit": "2.1.0",
+        "xunit.runner.dnx": "2.1.0-rc1-build204"
+    },
+
+    "commands": {
+        "test": "xunit.runner.dnx"
+    }
+}
