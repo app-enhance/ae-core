@@ -19,10 +19,6 @@
     {
         protected static readonly Type EventType = typeof(IEvent);
 
-        protected static readonly Type HandlerType = typeof(IEventHandler);
-
-        protected static readonly Type GenericHandlerType = typeof(IEventHandler<IEvent>);
-
         protected static readonly ConcurrentDictionary<Type, ConcurrentDictionary<Type, MethodInfo>> HandlersMapping =
             new ConcurrentDictionary<Type, ConcurrentDictionary<Type, MethodInfo>>();
 
@@ -31,7 +27,7 @@
             var type = this.GetType();
             if (HandlersMapping.ContainsKey(type) == false)
             {
-                var handlerInterfaces = type.GetInterfaces().Where(x => HandlerType.IsAssignableFrom(x) && HandlerType != x && GenericHandlerType != x);
+                var handlerInterfaces = type.GetInterfaces().Where(IsFitEventHandlerType);
 
                 var handlingMethods = handlerInterfaces.Select(SelectHandlingMethods);
                 HandlersMapping.TryAdd(type, new ConcurrentDictionary<Type, MethodInfo>(handlingMethods));
@@ -57,12 +53,22 @@
             }
         }
 
+        protected static bool IsFitEventHandlerType(Type x)
+        {
+            if (x.GetTypeInfo().IsGenericType == false || x == typeof(IEventHandler<IEvent>))
+            {
+                return false;
+            }
+
+            var genericDefinition = x.GetGenericTypeDefinition();
+            return genericDefinition == typeof(IEventHandler<>);
+        }
+
         protected static KeyValuePair<Type, MethodInfo> SelectHandlingMethods(Type @interface)
         {
             var method = @interface.GetMethod("Handle");
             if (method == null)
             {
-                // TODO: what if someone create other interface from IEventHandler ?
                 throw new ArgumentException("Incorrect interface type", "@interface");
             }
 
