@@ -17,20 +17,25 @@
     /// </remarks>
     public abstract class EventHandlerBase : IEventHandler<IEvent>
     {
+        protected static readonly Type EventType = typeof(IEvent);
+
         protected static readonly Type HandlerType = typeof(IEventHandler);
 
         protected static readonly Type GenericHandlerType = typeof(IEventHandler<IEvent>);
 
-        protected static ConcurrentDictionary<Type, MethodInfo> HandlersMapping;
+        protected static readonly ConcurrentDictionary<Type, ConcurrentDictionary<Type, MethodInfo>> HandlersMapping =
+            new ConcurrentDictionary<Type, ConcurrentDictionary<Type, MethodInfo>>();
 
         public EventHandlerBase()
         {
-            var handlerInterfaces = this.GetType().GetInterfaces().Where(x => HandlerType.IsAssignableFrom(x) 
-                                                                              && HandlerType != x 
-                                                                              && GenericHandlerType != x);
+            var type = this.GetType();
+            if (HandlersMapping.ContainsKey(type) == false)
+            {
+                var handlerInterfaces = type.GetInterfaces().Where(x => HandlerType.IsAssignableFrom(x) && HandlerType != x && GenericHandlerType != x);
 
-            var handlingMethods = handlerInterfaces.Select(SelectHandlingMethods);
-            HandlersMapping = new ConcurrentDictionary<Type, MethodInfo>(handlingMethods);
+                var handlingMethods = handlerInterfaces.Select(SelectHandlingMethods);
+                HandlersMapping.TryAdd(type, new ConcurrentDictionary<Type, MethodInfo>(handlingMethods));
+            }
 
             this.Logger = NullLogger.Instance;
         }
@@ -43,8 +48,8 @@
             {
                 var eventType = @event.GetType();
 
-                MethodInfo handlingMethod;
-                if (HandlersMapping.TryGetValue(eventType, out handlingMethod))
+                var handlingMethod = this.RetrieveHandler(eventType);
+                if (handlingMethod != null )
                 {
                     handlingMethod.Invoke(this, new object[] { @event });
                     this.Logger.Debug($"Handled event: {eventType.Name}", @event);
@@ -69,6 +74,28 @@
             var eventParameter = parameters.SingleOrDefault(x => x.Name == "event") ?? parameters.FirstOrDefault();
 
             return eventParameter?.ParameterType;
+        }
+
+        protected virtual MethodInfo RetrieveHandler(Type eventType)
+        {
+            if (eventType == null || EventType.IsAssignableFrom(eventType) == false)
+            {
+                return null;
+            }
+
+            ConcurrentDictionary<Type, MethodInfo> handlers;
+            if (HandlersMapping.TryGetValue(this.GetType(), out handlers) == false)
+            {
+                return null;
+            }
+
+            MethodInfo handler;
+            if (handlers.TryGetValue(eventType, out handler) == false)
+            {
+                return null;
+            }
+
+            return handler;
         }
     }
 }
