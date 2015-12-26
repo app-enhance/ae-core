@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{556F9C
 		LICENSE = LICENSE
 		NuGet.config = NuGet.config
 		README.md = README.md
-		WE-Markdown.css = WE-Markdown.css
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AE.Core", "src\AE.Core\AE.Core.xproj", "{8135ACD5-C004-4DF3-8BD3-AACC8968E697}"
