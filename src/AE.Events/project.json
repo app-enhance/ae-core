@@ -6,8 +6,8 @@
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
     "frameworks": {
-        "dnx46": { },
-        "dnxcore50": { }
+        "net46": { },
+        "dotnet5.4": { }
     },
     "dependencies": {
         "AE.Core": "0.0.1-*",
