@@ -18,34 +18,17 @@ Any sugestions will be welocme
 * Extensible
 * IoC based
 * Easy to use
-* Only technical problems
-* Messages over RPC
 * Less coupling
 * Async
 
-## AE.Core
-This is the base for other components with low level abstractions arising from assumptions.  
-Contains abstractions and default implementations for:
-* Logging 
-* Dependency Injection
-* Transactions
+## Packages
 
-## AE.Data
-Contains abstractions for:
-* Document/object repository
-* Query framework
-
-## AE.Commands
-Commands framework
-
-## AE.Events
-Events framework
-
-## AE.DDD
-Contains domain driven design components:
-* Aggragate root
-* Entiy
-* Value objects
-
+| Package     | Description                                                                                                                                                             |
+|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AE.Core     | This is the base for other components with low level abstractions and implementations arising from assumptions. Contains something like DI, Logging, Transactions. [More](https://github.com/app-enhance/ae-core/wiki/AE.Core) |
+| AE.Events   | Events framework. [More](https://github.com/app-enhance/ae-core/wiki/AE.Events)                                                                                                                                                 |
+| AE.Data     | Query framework and abstractions over document repository. [More](https://github.com/app-enhance/ae-core/wiki/AE.Data)                                                                                                         |
+| AE.Commands | Commands framework. [More](https://github.com/app-enhance/ae-core/wiki/AE.Commands)                                                                                                                                                |
+| AE.DDD      | Domain Driven Design base components and useful patterns. [More](https://github.com/app-enhance/ae-core/wiki/AE.DDD)                                                                                                          |
 ### Contribute
 * Testing: xUnit
