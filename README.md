@@ -19,6 +19,7 @@ Any sugestions will be welocme
 * Easy to use
 * Less coupling
 * Async
+* Don't reinvent the wheel 
 
 ## Packages
 
