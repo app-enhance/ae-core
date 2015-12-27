@@ -5,8 +5,7 @@ common problems which appears in real applications and tries implement wide
 known solutions as a ready to use components like DDD building blocks, CQRS, 
 events mechanism etc.
 
-Most of components in this library are **abstractions** over technical problem
-like dependency injection, logging or transactions and they describe teoretical 
+Most of components in this library are **abstractions** over technical problem and they describe teoretical 
 aspects in the most simpliest way.
 
 **Status:** starting project, composition of everything can be changed :)  
