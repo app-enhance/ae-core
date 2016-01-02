@@ -30,4 +30,4 @@ Any sugestions will be welocme
 | AE.Commands | Commands framework. [More](https://github.com/app-enhance/ae-core/wiki/AE.Commands)                                                                                                                                                |
 | AE.DDD      | Domain Driven Design base components and useful patterns. [More](https://github.com/app-enhance/ae-core/wiki/AE.DDD)                                                                                                          |
 ### Contribute
-* Testing: xUnit
+Before pushing new feature or improvement please read [CONTRIBUTING.md](https://github.com/app-enhance/ae-core/blob/master/CONTRIBUTING.md)
