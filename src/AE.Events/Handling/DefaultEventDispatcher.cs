@@ -3,16 +3,16 @@ namespace AE.Events.Handling
     using System;
     using System.Linq;
 
-    using AE.Core.Logging;
+    using Core.Logging;
 
     public class DefaultEventDispatcher : IEventDispatcher
     {
-        protected readonly IEventHandlerFactory eventHandlerFactory;
+        private readonly IEventHandlerFactory _eventHandlerFactory;
 
         public DefaultEventDispatcher(IEventHandlerFactory eventHandlerFactory)
         {
-            this.eventHandlerFactory = eventHandlerFactory;
-            this.Logger = NullLogger.Instance;
+            _eventHandlerFactory = eventHandlerFactory;
+            Logger = NullLogger.Instance;
         }
 
         public ILogger Logger { get; set; }
@@ -27,11 +27,11 @@ namespace AE.Events.Handling
                     }
                     catch (Exception e)
                     {
-                        this.Logger.Error($"Execution of event throw exception. Event: {typeof(T).Name}", e);
+                        Logger.Error($"Execution of event throw exception. Event: {typeof(T).Name}", e);
                     }
                 };
 
-            this.Handle(@event, exceptionSwallowing);
+            Handle(@event, exceptionSwallowing);
         }
 
         protected virtual void Handle<T>(T @event, Action<Action> handleWrapper = null) where T : IEvent
@@ -41,8 +41,7 @@ namespace AE.Events.Handling
                 handleWrapper = handle => handle();
             }
 
-            var handlers = this.eventHandlerFactory.SearcHandlers<T>();
-            
+            var handlers = _eventHandlerFactory.SearcHandlers<T>().ToList();
             if (handlers.Any())
             {
                 foreach (var eventHandler in handlers)

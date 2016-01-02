@@ -6,7 +6,7 @@ namespace AE.Events
     {
         protected Event()
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }

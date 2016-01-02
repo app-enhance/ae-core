@@ -1,19 +1,19 @@
 namespace AE.Events.Distribute
 {
-    using AE.Events.Handling;
+    using Handling;
 
     public class DefaultEventBus : IEventBus
     {
-        protected readonly IEventDispatcher eventDispatcher;
+        protected readonly IEventDispatcher _eventDispatcher;
 
         public DefaultEventBus(IEventDispatcher eventDispatcher)
         {
-            this.eventDispatcher = eventDispatcher;
+            _eventDispatcher = eventDispatcher;
         }
 
         public virtual void Raise<T>(T @event) where T : IEvent
         {
-            this.eventDispatcher.Dispatch(@event);
+            _eventDispatcher.Dispatch(@event);
         }
     }
 }

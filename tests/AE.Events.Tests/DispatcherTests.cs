@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using AE.Events.Handling;
+    using Handling;
 
     using Xunit;
 
@@ -31,7 +31,7 @@
 
             public void Handle(TestEvent @event)
             {
-                this.IsHandled = true;
+                IsHandled = true;
                 throw new NotImplementedException();
             }
         }
@@ -46,23 +46,23 @@
 
             public StubEventHandlerFactory()
             {
-                this.container = new List<KeyValuePair<Type, IEventHandler>>();
+                container = new List<KeyValuePair<Type, IEventHandler>>();
             }
 
             public IEnumerable<IEventHandler<T>> SearcHandlers<T>() where T : IEvent
             {
-                var lookup = this.container.ToLookup(k => k.Key, v => v.Value);
+                var lookup = container.ToLookup(k => k.Key, v => v.Value);
                 return lookup[typeof(T)].Cast<IEventHandler<T>>();
             }
 
             public IEnumerable<IEventHandler> GetAllEventHandlers()
             {
-                return this.container.Select(x => x.Value).ToArray();
+                return container.Select(x => x.Value).ToArray();
             }
 
             public StubEventHandlerFactory AddHandler<T>(IEventHandler<T> handler) where T : IEvent
             {
-                this.container.Add(new KeyValuePair<Type, IEventHandler>(typeof(T), handler));
+                container.Add(new KeyValuePair<Type, IEventHandler>(typeof(T), handler));
                 return this;
             }
         }

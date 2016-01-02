@@ -1,6 +1,6 @@
 ﻿namespace AE.Events.Tests
 {
-    using AE.Events.Handling;
+    using Handling;
 
     using Xunit;
 
@@ -43,13 +43,13 @@
 
             public void Handle(TestEvent @event)
             {
-                this.HandledCount++;
+                HandledCount++;
             }
 
             public override void Handle(IEvent @event)
             {
                 base.Handle(@event);
-                this.HandledCount++;
+                HandledCount++;
             }
         }
 
@@ -59,13 +59,13 @@
 
             public void Handle(TestEvent @event)
             {
-                this.HandledCount++;
+                HandledCount++;
             }
 
             public override void Handle(IEvent @event)
             {
                 base.Handle(@event);
-                this.HandledCount++;
+                HandledCount++;
             }
         }
 

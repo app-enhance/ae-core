@@ -2,16 +2,11 @@
 {
     using System;
 
-    using AE.Core.DI;
+    using DI;
 
     public class NullLogger : ILogger, INotRegisterDependency
     {
-        private static readonly ILogger instance = new NullLogger();
-
-        public static ILogger Instance
-        {
-            get { return instance; }
-        }
+        public static ILogger Instance { get; } = new NullLogger();
 
         public void Error(string message)
         {

@@ -2,7 +2,7 @@
 {
     using System;
 
-    using AE.Core.DI;
+    using DI;
 
     public interface ILogger : IDependency
     {

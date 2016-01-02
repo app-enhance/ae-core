@@ -1,6 +1,6 @@
 ﻿namespace AE.Events.Handling
 {
-    using AE.Core.DI;
+    using Core.DI;
 
     public interface IEventHandler : IDependency
     {

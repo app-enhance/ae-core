@@ -1,14 +1,14 @@
 namespace AE.Events.Collect
 {
-    using AE.Events.Distribute;
+    using Distribute;
 
     public class DefaultEventsPublisher : IEventsPublisher
     {
-        protected readonly IEventBus eventBus;
+        protected readonly IEventBus _eventBus;
 
         public DefaultEventsPublisher(IEventBus eventBus)
         {
-            this.eventBus = eventBus;
+            _eventBus = eventBus;
         }
 
         public virtual void PublishEvents()
@@ -16,7 +16,7 @@ namespace AE.Events.Collect
             while (EventsQueue.IsAnyEvent())
             {
                 var @event = EventsQueue.GetNextEvent();
-                this.eventBus.Raise(@event);
+                _eventBus.Raise(@event);
             }
         }
     }

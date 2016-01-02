@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using AE.Core.DI;
+    using Core.DI;
 
     public interface IEventHandlerFactory : IDependency
     {
