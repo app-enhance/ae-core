@@ -8,8 +8,7 @@ https://github.com/sakeproject/sake
 ## Coding style guidelines
 
 1. Use [Allman style](http://en.wikipedia.org/wiki/Indent_style#Allman_style) braces, where each brace begins on a new line. 
-   A single line statement block can go without braces but the block must be properly indented on its own line and it must 
-   not be nested in other statement blocks that use braces. 
+   A single line statement block cannot go without braces because of nesting and readability.
 2. Use four spaces of indentation (no tabs).
 3. Use `_camelCase` for private fields and use `readonly` where possible.
 4. Avoid `this.` unless absolutely necessary
