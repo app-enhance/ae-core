@@ -1,6 +1,5 @@
 # App Enhance
-This project is group of correct (in my opition) programing practicies 
-which helps to build better applications with small effort. It address 
+This project helps to build better applications with small effort. It address 
 common problems which appears in real applications and tries implement wide
 known solutions as a ready to use components like DDD building blocks, CQRS, 
 events mechanism etc.
