@@ -5,15 +5,15 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/yjktwfhrd9can0af/branch/master?svg=true)](https://ci.appveyor.com/project/Ermesx/ae-core/branch/master)
 
 This project helps to build better applications with small effort. It address 
-common problems which appears in real applications and tries implement wide
-known solutions as a ready to use components like DDD building blocks, CQRS, 
+common problems which appear in real applications and tries to implement wide
+known solutions as ready to use components like DDD building blocks, CQRS, 
 events mechanism etc.
 
 Most of components in this library are **abstractions** over technical problem and they describe teoretical 
 aspects in the most simpliest way.
 
 **Status:** starting project, composition of everything can be changed :)  
-Any sugestions will be welocme
+Any suggestions are welocome
 
 ## Fundamental assumptions of the library:
 * No dependencies
