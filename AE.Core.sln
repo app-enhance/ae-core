@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0CFBA29D-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4D06F9F1-03CA-4975-8E19-AC8DEBAC14EA}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		build.cmd = build.cmd
 		build.sh = build.sh
 		makefile.shade = makefile.shade
