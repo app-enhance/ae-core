@@ -5,13 +5,13 @@
     "tags": [ "core" ],
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
-    "frameworks": {
-        "net46": { },
-        "dotnet5.4": { }
-    },
     "repository": {
         "type": "git",
         "url": "https://github.com/app-enhance/ae-core"
+    },
+    "frameworks": {
+        "net46": { },
+        "dotnet5.4": { }
     },
     "dependencies": {
         "System.Runtime": "4.0.21-*",

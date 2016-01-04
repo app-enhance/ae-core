@@ -5,13 +5,13 @@
     "tags": [ "tests" ],
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
-    "frameworks": {
-        "dnx46": { },
-        "dnxcore50": { }
-    },
     "repository": {
         "type": "git",
         "url": "https://github.com/app-enhance/ae-core"
+    },
+    "frameworks": {
+        "dnx46": { },
+        "dnxcore50": { }
     },
     "dependencies": {
         "AE.Core": "0.0.1-*",
