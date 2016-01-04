@@ -53,14 +53,14 @@
             }
         }
 
-        protected static bool IsFitEventHandlerType(Type x)
+        protected static bool IsFitEventHandlerType(Type type)
         {
-            if ((x.GetTypeInfo().IsGenericType == false) || (x == typeof(IEventHandler<IEvent>)))
+            if ((type.GetTypeInfo().IsGenericType == false) || (type == typeof(IEventHandler<IEvent>)))
             {
                 return false;
             }
 
-            var genericDefinition = x.GetGenericTypeDefinition();
+            var genericDefinition = type.GetGenericTypeDefinition();
             return genericDefinition == typeof(IEventHandler<>);
         }
 
