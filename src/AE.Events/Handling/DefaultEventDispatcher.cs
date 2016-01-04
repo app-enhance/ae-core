@@ -5,6 +5,8 @@ namespace AE.Events.Handling
 
     using Core.Logging;
 
+    using Microsoft.Extensions.Logging;
+
     public class DefaultEventDispatcher : IEventDispatcher
     {
         private readonly IEventHandlerFactory _eventHandlerFactory;
@@ -27,7 +29,7 @@ namespace AE.Events.Handling
                     }
                     catch (Exception e)
                     {
-                        Logger.Error($"Execution of event throw exception. Event: {typeof(T).Name}", e);
+                        Logger.LogError($"Execution of event throw exception. Event: {typeof(T).Name}", e);
                     }
                 };
 

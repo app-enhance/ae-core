@@ -2,34 +2,35 @@
 {
     using System;
 
-    using DI;
+    using Microsoft.Extensions.Logging;
 
-    public class NullLogger : ILogger, INotRegisterDependency
+    public class NullLogger : ILogger
     {
         public static ILogger Instance { get; } = new NullLogger();
 
-        public void Error(string message)
+        public void Log(LogLevel logLevel,
+                        int eventId,
+                        object state,
+                        Exception exception,
+                        Func<object, Exception, string> formatter)
         {
         }
 
-        public void Error(string message, Exception ex)
+        public bool IsEnabled(LogLevel logLevel)
         {
+            return false;
         }
 
-        public void Warning(string message)
+        public IDisposable BeginScopeImpl(object state)
         {
+            return new NullScope();
         }
 
-        public void Information(string message)
+        private class NullScope : IDisposable
         {
-        }
-
-        public void Debug(string message)
-        {
-        }
-
-        public void Debug(string message, object toSerialize)
-        {
+            public void Dispose()
+            {
+            }
         }
     }
 }

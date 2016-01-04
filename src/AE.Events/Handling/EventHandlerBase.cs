@@ -8,6 +8,8 @@
 
     using Core.Logging;
 
+    using Microsoft.Extensions.Logging;
+
     /// <summary>
     ///     This class allow to resolve events arriving from outsite of application.
     /// </summary>
@@ -48,7 +50,7 @@
                 if (handlingMethod != null)
                 {
                     handlingMethod.Invoke(this, new object[] { @event });
-                    Logger.Debug($"Handled event: {eventType.Name}", @event);
+                    Logger.LogDebug($"Handled event: {eventType.Name}", @event);
                 }
             }
         }

@@ -1,8 +1,8 @@
 ﻿{
     "version": "0.0.1-*",
-    "description": "AE.Core Class Library",
+    "description": "AE.Core.Tests Class Library",
     "authors": [ "Wojtek Gadziński" ],
-    "tags": [ "core" ],
+    "tags": [ "tests" ],
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
     "repository": {
@@ -10,14 +10,17 @@
         "url": "https://github.com/app-enhance/ae-core"
     },
     "frameworks": {
-        "net46": { },
-        "dotnet5.4": { }
+        "dnx46": { },
+        "dnxcore50": { }
     },
     "dependencies": {
+        "AE.Core": "0.0.1-*",
         "System.Runtime": "4.0.21-*",
-        "System.Threading.Thread": "4.0.0-*",
-        "System.ComponentModel": "4.0.1-*",
-        "Microsoft.Extensions.Logging.Abstractions": "1.0.0-*",
-        "Microsoft.Extensions.Logging": "1.0.0-*"
+        "xunit": "2.1.0",
+        "xunit.runner.dnx": "2.1.0-rc1-build204"
+    },
+
+    "commands": {
+        "test": "xunit.runner.dnx"
     }
 }
