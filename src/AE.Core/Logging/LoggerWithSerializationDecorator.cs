@@ -37,7 +37,7 @@
             return _logger.BeginScopeImpl(state);
         }
 
-        public void Log(LogLevel logLevel,
+        public async void Log(LogLevel logLevel,
                         int eventId,
                         object state,
                         Exception exception,
@@ -50,7 +50,7 @@
             }
 
             var message = formatter != null ? formatter(state, exception) : LogFormatter.Formatter(state, exception);
-            var serializedObject = _serializeService.Serialize(toSerialize);
+            var serializedObject = await _serializeService.Serialize(toSerialize);
 
             Log(logLevel, eventId, $"{message}{Environment.NewLine}{serializedObject}", null, null);
         }

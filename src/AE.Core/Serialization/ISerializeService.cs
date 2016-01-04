@@ -1,13 +1,14 @@
 ﻿namespace AE.Core.Serialization
 {
     using System;
+    using System.Threading.Tasks;
 
     public interface ISerializeService
     {
-        string Serialize(object @object);
+        Task<string> Serialize(object @object);
 
-        T Deserialize<T>(string @object);
+        Task<T> Deserialize<T>(string @object);
 
-        object Deserialize(string @object, Type type);
+        Task<object> Deserialize(string @object, Type type);
     }
 }
