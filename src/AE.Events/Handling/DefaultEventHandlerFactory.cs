@@ -1,27 +1,28 @@
 namespace AE.Events.Handling
 {
+    using System;
     using System.Collections.Generic;
 
     using Core.DI;
 
     public class DefaultEventHandlerFactory : IEventHandlerFactory
     {
-        protected readonly IComponentResolver _componentResolver;
+        protected readonly IServiceProvider _serviceProvider;
 
-        public DefaultEventHandlerFactory(IComponentResolver componentResolver)
+        public DefaultEventHandlerFactory(IServiceProvider serviceProvider)
         {
-            _componentResolver = componentResolver;
+            _serviceProvider = serviceProvider;
         }
 
         public virtual IEnumerable<IEventHandler<T>> SearcHandlers<T>() where T : IEvent
         {
-            var eventHandlers = new List<IEventHandler<T>>(_componentResolver.Resolve<IEnumerable<IEventHandler<T>>>());
+            var eventHandlers = new List<IEventHandler<T>>(_serviceProvider.Resolve<IEnumerable<IEventHandler<T>>>());
             return eventHandlers;
         }
 
         public virtual IEnumerable<IEventHandler> GetAllEventHandlers()
         {
-            var eventHandlers = new List<IEventHandler>(_componentResolver.Resolve<IEnumerable<IEventHandler>>());
+            var eventHandlers = new List<IEventHandler>(_serviceProvider.Resolve<IEnumerable<IEventHandler>>());
             return eventHandlers;
         }
     }
