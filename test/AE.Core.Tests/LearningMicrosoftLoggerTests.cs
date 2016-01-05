@@ -110,7 +110,6 @@
         {
             var loggerFactory = new LoggerFactory();
             loggerFactory.AddProvider(loggerProvider);
-            loggerFactory.MinimumLevel = LogLevel.Verbose;
             return loggerFactory.CreateLogger("LearnLogger");
         }
 
