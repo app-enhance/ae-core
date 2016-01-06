@@ -10,7 +10,7 @@
         "url": "https://github.com/app-enhance/ae-core"
     },
     "frameworks": {
-        "dnx461": { },
+        "dnx46": { },
         "dnxcore50": { }
     },
     "dependencies": {

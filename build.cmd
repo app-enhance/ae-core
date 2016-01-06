@@ -10,7 +10,7 @@ SET KOREBUILD_VERSION=
 
 SET NUGET_PATH=%BUILD_FOLDER%\NuGet.exe
 SET NUGET_VERSION=latest
-SET CACHED_NUGET=%LocalAppData%\NuGet\nuget.%NUGET_VERSION%.exe
+SET CACHED_NUGET="%LocalAppData%\NuGet\nuget.%NUGET_VERSION%.exe"
 
 IF NOT EXIST %BUILD_FOLDER% (
     md %BUILD_FOLDER%
@@ -19,8 +19,8 @@ IF NOT EXIST %BUILD_FOLDER% (
 IF NOT EXIST %NUGET_PATH% (
     IF NOT EXIST %CACHED_NUGET% (
         echo Downloading latest version of NuGet.exe...
-        IF NOT EXIST %LocalAppData%\NuGet ( 
-            md %LocalAppData%\NuGet
+        IF NOT EXIST "%LocalAppData%\NuGet" ( 
+            md "%LocalAppData%\NuGet"
         )
         @powershell -NoProfile -ExecutionPolicy unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest 'https://dist.nuget.org/win-x86-commandline/%NUGET_VERSION%/nuget.exe' -OutFile '%CACHED_NUGET%'"
     )
