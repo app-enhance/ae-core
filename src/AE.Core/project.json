@@ -10,7 +10,7 @@
         "url": "https://github.com/app-enhance/ae-core"
     },
     "frameworks": {
-        "net46": { },
+        "net461": { },
         "dotnet5.4": { }
     },
     "dependencies": {
