@@ -17,7 +17,6 @@
         "System.Runtime": "4.0.21-*",
         "System.Threading.Thread": "4.0.0-*",
         "System.ComponentModel": "4.0.1-*",
-        "Microsoft.Extensions.Logging.Abstractions": "1.0.0-*",
-        "Microsoft.Extensions.Logging": "1.0.0-*"
+        "Microsoft.Extensions.Logging.Abstractions": "1.0.0-*"
     }
 }
