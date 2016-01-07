@@ -23,8 +23,7 @@
         {
             if ((state == null) && (exception == null))
             {
-                throw new InvalidOperationException(
-                    "No message or exception details were found to create a message for the log.");
+                throw new InvalidOperationException("No message or exception details were found to create a message for the log.");
             }
 
             if (state == null)

@@ -18,11 +18,7 @@
             _serializeService = serializeService;
         }
 
-        public void Log(LogLevel logLevel,
-                        int eventId,
-                        object state,
-                        Exception exception,
-                        Func<object, Exception, string> formatter)
+        public void Log(LogLevel logLevel, int eventId, object state, Exception exception, Func<object, Exception, string> formatter)
         {
             _logger.Log(logLevel, eventId, state, exception, formatter);
         }

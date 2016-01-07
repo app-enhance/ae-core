@@ -72,21 +72,14 @@
         }
 
         [Fact]
-        public void
-            When_pass_ILogValues_state_param_to_log_then_message_equals_to_wierd_toString_format_usefull_for_describe_types
-            ()
+        public void When_pass_ILogValues_state_param_to_log_then_message_equals_to_wierd_toString_format_usefull_for_describe_types()
         {
             // Arrange
             var loggerProvider = new MessageVariableLoggerProvider();
             var logger = CreateLogger(loggerProvider);
 
             // Act
-            logger.Log(
-                LogLevel.Error,
-                0,
-                new FormattedLogValues($"{{{nameof(TestObject)}}}{{string}}", new TestObject(), "test_string"),
-                null,
-                null);
+            logger.Log(LogLevel.Error, 0, new FormattedLogValues($"{{{nameof(TestObject)}}}{{string}}", new TestObject(), "test_string"), null, null);
 
             // Assert
             Assert.Equal(
@@ -141,11 +134,7 @@
                 _setMessageVariable = setMessageVariable;
             }
 
-            public void Log(LogLevel logLevel,
-                            int eventId,
-                            object state,
-                            Exception exception,
-                            Func<object, Exception, string> formatter)
+            public void Log(LogLevel logLevel, int eventId, object state, Exception exception, Func<object, Exception, string> formatter)
             {
                 var message = formatter != null ? formatter(state, exception) : LogFormatter.Formatter(state, exception);
                 _setMessageVariable(message);
