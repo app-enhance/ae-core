@@ -4,6 +4,8 @@
 
     public interface ITransaction : IDependency
     {
+        bool IsStarted { get; set; }
+
         void Configure(ITransactionOptions options);
 
         void Begin();
@@ -11,7 +13,5 @@
         void End();
 
         void Cancel();
-
-        bool IsStarted();
     }
 }
