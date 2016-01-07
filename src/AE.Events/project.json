@@ -3,16 +3,19 @@
     "description": "AE.Events Class Library",
     "authors": [ "Wojtek Gadziński" ],
     "tags": [ "events" ],
+
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
     "repository": {
         "type": "git",
         "url": "https://github.com/app-enhance/ae-core"
     },
+
     "frameworks": {
         "net461": { },
         "dotnet5.4": { }
     },
+
     "dependencies": {
         "AE.Core": "0.0.1-*",
         "System.Collections.Concurrent": "4.0.11-*",

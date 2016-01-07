@@ -1,4 +1,4 @@
-﻿namespace AE.Core.Transactions
+﻿namespace AE.Transactions.Abstractions
 {
     public interface ITransactionOptions
     {

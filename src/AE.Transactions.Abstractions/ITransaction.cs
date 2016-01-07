@@ -1,6 +1,6 @@
-﻿namespace AE.Core.Transactions
+﻿namespace AE.Transactions.Abstractions
 {
-    using DI;
+    using Core.DI;
 
     public interface ITransaction : IDependency
     {
