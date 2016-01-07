@@ -38,11 +38,11 @@
         }
 
         public async void Log(LogLevel logLevel,
-                        int eventId,
-                        object state,
-                        Exception exception,
-                        Func<object, Exception, string> formatter,
-                        object toSerialize)
+                              int eventId,
+                              object state,
+                              Exception exception,
+                              Func<object, Exception, string> formatter,
+                              object toSerialize)
         {
             if (IsEnabled(logLevel) == false)
             {
