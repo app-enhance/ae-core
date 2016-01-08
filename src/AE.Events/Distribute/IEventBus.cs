@@ -1,6 +1,6 @@
 ﻿namespace AE.Events.Distribute
 {
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public interface IEventBus : ISingletonDependency
     {

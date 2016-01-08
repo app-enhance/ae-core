@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public interface IEventHandlerFactory : IScopedDependency
     {

@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Reflection;
 
-    using DI;
+    using Extensions.DependencyInjection;
 
     using Microsoft.Extensions.DependencyInjection;
 

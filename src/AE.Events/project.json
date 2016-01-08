@@ -17,11 +17,13 @@
     },
 
     "dependencies": {
+        "AE.Extensions.DependencyInjection": "0.0.1-*",
         "AE.Core": "0.0.1-*",
         "System.Collections.Concurrent": "4.0.11-*",
         "System.Linq": "4.0.1-*",
         "System.Reflection": "4.1.0-*",
         "System.Reflection.TypeExtensions": "4.1.0-*",
-        "System.Threading.Thread": "4.0.0-*"
+        "System.Threading.Thread": "4.0.0-*",
+        "System.ComponentModel": "4.0.1-*"
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AE.Core.DI
+﻿namespace AE.Extensions.DependencyInjection
 {
     using System;
     using System.Diagnostics;

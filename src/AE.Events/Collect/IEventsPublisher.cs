@@ -1,6 +1,6 @@
 namespace AE.Events.Collect
 {
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public interface IEventsPublisher : IScopedDependency
     {

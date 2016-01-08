@@ -1,6 +1,6 @@
 ﻿namespace AE.Events.Handling
 {
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public interface IEventDispatcher : IScopedDependency
     {

@@ -1,6 +1,6 @@
 ﻿namespace AE.Transactions.Abstractions
 {
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public interface ITransaction : IScopedDependency
     {

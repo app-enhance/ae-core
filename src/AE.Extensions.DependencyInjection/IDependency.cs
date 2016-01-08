@@ -1,4 +1,4 @@
-﻿namespace AE.Core.DI
+﻿namespace AE.Extensions.DependencyInjection
 {
     /// <summary>
     ///     Base interface for services as dependencies

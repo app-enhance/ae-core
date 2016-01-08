@@ -3,7 +3,7 @@ namespace AE.Events.Handling
     using System;
     using System.Collections.Generic;
 
-    using Core.DI;
+    using Extensions.DependencyInjection;
 
     public class DefaultEventHandlerFactory : IEventHandlerFactory
     {
