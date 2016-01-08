@@ -1,10 +1,8 @@
-﻿namespace AE.Core.Tests
+﻿namespace AE.Extensions.DependencyInjection.Tests
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-
-    using Extensions.DependencyInjection;
 
     using Microsoft.Extensions.DependencyInjection;
 

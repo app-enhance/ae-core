@@ -1,8 +1,8 @@
 ﻿{
     "version": "1.0.0-*",
-    "description": "AE.Events.Tests Class Library",
+    "description": "AE.Extensions.DependencyInjection.Tests Class Library",
     "authors": [ "Wojtek Gadziński" ],
-    "tags": [ "tests" ],
+    "tags": [ "Tests" ],
 
     "projectUrl": "https://github.com/app-enhance/ae-core",
     "licenseUrl": "https://github.com/app-enhance/ae-core/blob/master/LICENSE",
@@ -17,10 +17,9 @@
     },
 
     "dependencies": {
-        "AE.Core": "0.0.1-*",
-        "AE.Events": "0.0.1-*",
-        "Newtonsoft.Json": "8.0.1-*",
+        "AE.Extensions.DependencyInjection": "0.0.1-*",
         "System.Runtime": "4.0.21-*",
+        "System.Reflection": "4.1.0-*",
         "xunit": "2.1.0-*",
         "xunit.runner.dnx": "2.1.0-*"
     },

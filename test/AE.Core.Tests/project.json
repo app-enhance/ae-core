@@ -1,5 +1,5 @@
 ﻿{
-    "version": "0.0.1-*",
+    "version": "1.0.0-*",
     "description": "AE.Core.Tests Class Library",
     "authors": [ "Wojtek Gadziński" ],
     "tags": [ "tests" ],
@@ -18,9 +18,7 @@
 
     "dependencies": {
         "AE.Core": "0.0.1-*",
-        "AE.Extensions.DependencyInjection": "0.0.1-*",
         "System.Runtime": "4.0.21-*",
-        "System.Reflection":  "4.1.0-*",
         "xunit": "2.1.0-*",
         "xunit.runner.dnx": "2.1.0-*"
     },
