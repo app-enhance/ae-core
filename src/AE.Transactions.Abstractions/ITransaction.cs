@@ -4,7 +4,7 @@
 
     public interface ITransaction : IDependency
     {
-        bool IsStarted { get; set; }
+        bool IsStarted { get; }
 
         void Configure(ITransactionOptions options);
 
