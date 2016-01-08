@@ -16,16 +16,11 @@ os:
   - linux
   - osx
 osx_image: xcode7.1
-script:
-  - ./build.sh verify
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov
 matrix:
   allow_failures:
     - os: osx
+script:
+  - ./build.sh verify
 notifications:
   email:
     on_failure: change
-
