@@ -2,7 +2,7 @@
 {
     using Core.DI;
 
-    public interface IEventHandler : IDependency
+    public interface IEventHandler : IScopedDependency
     {
     }
 

@@ -4,7 +4,7 @@
 
     using Core.DI;
 
-    public interface IEventHandlerFactory : IDependency
+    public interface IEventHandlerFactory : IScopedDependency
     {
         IEnumerable<IEventHandler<T>> SearcHandlers<T>() where T : IEvent;
 

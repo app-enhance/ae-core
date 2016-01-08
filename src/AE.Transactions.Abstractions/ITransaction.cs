@@ -2,7 +2,7 @@
 {
     using Core.DI;
 
-    public interface ITransaction : IDependency
+    public interface ITransaction : IScopedDependency
     {
         bool IsStarted { get; }
 

@@ -11,6 +11,8 @@
     {
         private static readonly Type DependencyType = typeof(IDependency);
 
+        private static readonly Type ScopedDependencyType = typeof(IScopedDependency);
+
         private static readonly Type TransientDependencyType = typeof(ITransientDependency);
 
         private static readonly Type SingletonDependencyType = typeof(ISingletonDependency);
@@ -73,30 +75,39 @@
 
         private static ServiceLifetime RetieveScope(IEnumerable<Type> interfaces)
         {
-            var scopes = ValidateDependencyScopes(interfaces);
-
-            if (scopes.Any(x => x == TransientDependencyType))
-            {
-                return ServiceLifetime.Transient;
-            }
-
-            if (scopes.Any(x => x == SingletonDependencyType))
+            var scope = ValidateDependencyScope(interfaces);
+            if (scope == SingletonDependencyType)
             {
                 return ServiceLifetime.Singleton;
             }
 
-            return ServiceLifetime.Scoped;
-        }
-
-        private static IEnumerable<Type> ValidateDependencyScopes(IEnumerable<Type> interfaces)
-        {
-            var validScopes = interfaces.Where(x => x == DependencyType || x == TransientDependencyType || x == SingletonDependencyType);
-            if (validScopes.Count() > 2)
+            if (scope == ScopedDependencyType)
             {
-                throw new DependencyDescriptionException("Cannot set more than one dependency lifetime");
+                return ServiceLifetime.Scoped;
             }
 
-            return validScopes.ToArray();
+            if (scope == TransientDependencyType)
+            {
+                return ServiceLifetime.Transient;
+            }
+
+            throw new DependencyDescriptionException("Cannot retrieve scope");
+        }
+
+        private static Type ValidateDependencyScope(IEnumerable<Type> interfaces)
+        {
+            var validScopes = interfaces.Where(x => x == ScopedDependencyType || x == TransientDependencyType || x == SingletonDependencyType);
+            if (validScopes.Any() == false)
+            {
+                throw new DependencyDescriptionException("There is no defined lifetime");
+            }
+
+            if (validScopes.Count() > 1)
+            {
+                throw new DependencyDescriptionException("Cannot set more than one lifetime");
+            }
+
+            return validScopes.First();
         }
     }
 }

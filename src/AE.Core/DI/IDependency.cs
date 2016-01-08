@@ -1,16 +1,23 @@
 ﻿namespace AE.Core.DI
 {
     /// <summary>
-    ///     Base interface for services that are instantiated per unit of work (i.e. web request).
+    ///     Base interface for services as dependencies
     /// </summary>
     public interface IDependency
     {
     }
 
     /// <summary>
-    ///     Base interface for services that are instantiated per shell/tenant.
+    ///     Base interface for services that are instantiated per application.
     /// </summary>
     public interface ISingletonDependency : IDependency
+    {
+    }
+
+    /// <summary>
+    ///     Base interface for services that are instantiated per unit of work (i.e. web request).
+    /// </summary>
+    public interface IScopedDependency : IDependency
     {
     }
 

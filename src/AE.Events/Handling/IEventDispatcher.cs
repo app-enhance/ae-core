@@ -2,7 +2,7 @@
 {
     using Core.DI;
 
-    public interface IEventDispatcher : IDependency
+    public interface IEventDispatcher : IScopedDependency
     {
         void Dispatch<T>(T @event) where T : IEvent;
     }

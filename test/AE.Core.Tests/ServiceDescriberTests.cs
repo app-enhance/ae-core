@@ -48,6 +48,22 @@
                 new ServiceDescriptorComparer());
         }
 
+        [Fact]
+        public void Describer_describe_generics_in_correct_way()
+        {
+            // Arrange
+            var assembly = GetTestAssembly();
+
+            // Act
+            var serviceDescriptions = ServicesDescriber.DescribeFromAssemblies(assembly);
+
+            // Assert
+            Assert.Contains(
+                CreateServiceDescriptor<IGeneric<int>, TestGenericService>(ServiceLifetime.Scoped),
+                serviceDescriptions,
+                new ServiceDescriptorComparer());
+        }
+
         private Assembly GetTestAssembly()
         {
             return typeof(ServiceDescriberTests).GetTypeInfo().Assembly;
@@ -58,7 +74,7 @@
             return new ServiceDescriptor(typeof(TInterface), typeof(TImplementation), lifetime);
         }
 
-        public interface ITestDependency : IDependency
+        public interface ITestDependency : IScopedDependency
         {
         }
 
@@ -66,7 +82,7 @@
         {
         }
 
-        public interface IRepleaceDependency : IDependency
+        public interface IRepleaceDependency : IScopedDependency
         {
         }
 
@@ -76,6 +92,14 @@
 
         [RepleaceDependency(typeof(RepleacedTestService))]
         public class RepleacingTestService : RepleacedTestService
+        {
+        }
+
+        public interface IGeneric<T> : IScopedDependency
+        {
+        }
+
+        public class TestGenericService : IGeneric<int>
         {
         }
 
