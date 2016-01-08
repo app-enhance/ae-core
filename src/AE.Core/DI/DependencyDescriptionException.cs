@@ -4,7 +4,6 @@
 
     public class DependencyDescriptionException : Exception
     {
-
         public DependencyDescriptionException()
         {
         }

@@ -27,7 +27,10 @@
 
         private static IEnumerable<Type> RetrieveTypesToRegistration(IEnumerable<Assembly> assembliesToScan)
         {
-            return assembliesToScan.SelectMany(x => x.ExportedTypes).Where(IsTypeToAutoRegistration);
+            var typesToRegistration = assembliesToScan.SelectMany(x => x.ExportedTypes).Where(IsTypeToAutoRegistration).ToList();
+            RemoveRepleacedTypes(typesToRegistration);
+
+            return typesToRegistration;
         }
 
         private static bool IsTypeToAutoRegistration(Type type)
@@ -35,6 +38,21 @@
             var typeInfo = type.GetTypeInfo();
             return DependencyType.IsAssignableFrom(type) && !NotRegisterDependencyType.IsAssignableFrom(type) && typeInfo.IsClass
                    && !typeInfo.IsAbstract && !typeInfo.IsGenericTypeDefinition;
+        }
+
+        private static void RemoveRepleacedTypes(ICollection<Type> typesToRegistration)
+        {
+            var repleacedTypes = FindRepleacedTypes(typesToRegistration);
+            foreach (var repleacedType in repleacedTypes)
+            {
+                typesToRegistration.Remove(repleacedType);
+            }
+        }
+
+        private static IEnumerable<Type> FindRepleacedTypes(IEnumerable<Type> types)
+        {
+            var repleaceDependencyAttibutes = types.SelectMany(x => x.GetTypeInfo().GetCustomAttributes<RepleaceDependencyAttribute>());
+            return repleaceDependencyAttibutes.Select(x => x.RepleacedType).ToList();
         }
 
         private static IEnumerable<ServiceDescriptor> CreateDescriptors(IEnumerable<Type> typesToRegistration)

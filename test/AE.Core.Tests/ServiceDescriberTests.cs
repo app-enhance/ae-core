@@ -1,5 +1,6 @@
 ﻿namespace AE.Core.Tests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -12,7 +13,7 @@
     public class ServiceDescriberTests
     {
         [Fact]
-        public void When_Assembly_has_services_as_dependencies_describer_should_describe_them_correct()
+        public void When_Assembly_has_services_describer_should_describe_them_correct()
         {
             // Arrange
             var assembly = GetTestAssembly();
@@ -21,16 +22,40 @@
             var serviceDescriptions = ServicesDescriber.DescribeFromAssemblies(assembly);
 
             // Assert
-            Assert.NotEmpty(serviceDescriptions);
             var description = serviceDescriptions.First();
             Assert.Equal(ServiceLifetime.Scoped, description.Lifetime);
             Assert.Equal(typeof(ITestDependency), description.ServiceType);
             Assert.Equal(typeof(TestServiceDependency), description.ImplementationType);
         }
 
+        [Fact]
+        public void When_exists_service_with_RepleaceDependecy_Describer_should_describe_only_this_one()
+        {
+            // Arrange
+            var assembly = GetTestAssembly();
+
+            // Act
+            var serviceDescriptions = ServicesDescriber.DescribeFromAssemblies(assembly);
+
+            // Assert
+            Assert.Contains(
+                CreateServiceDescriptor<IRepleaceDependency, RepleacingTestService>(ServiceLifetime.Scoped),
+                serviceDescriptions,
+                new ServiceDescriptorComparer());
+            Assert.DoesNotContain(
+                CreateServiceDescriptor<IRepleaceDependency, RepleacedTestService>(ServiceLifetime.Scoped),
+                serviceDescriptions,
+                new ServiceDescriptorComparer());
+        }
+
         private Assembly GetTestAssembly()
         {
             return typeof(ServiceDescriberTests).GetTypeInfo().Assembly;
+        }
+
+        private ServiceDescriptor CreateServiceDescriptor<TInterface, TImplementation>(ServiceLifetime lifetime)
+        {
+            return new ServiceDescriptor(typeof(TInterface), typeof(TImplementation), lifetime);
         }
 
         public interface ITestDependency : IDependency
@@ -39,6 +64,38 @@
 
         public class TestServiceDependency : ITestDependency
         {
+        }
+
+        public interface IRepleaceDependency : IDependency
+        {
+        }
+
+        public class RepleacedTestService : IRepleaceDependency
+        {
+        }
+
+        [RepleaceDependency(typeof(RepleacedTestService))]
+        public class RepleacingTestService : RepleacedTestService
+        {
+        }
+
+        private class ServiceDescriptorComparer : IEqualityComparer<ServiceDescriptor>
+        {
+            public bool Equals(ServiceDescriptor x, ServiceDescriptor y)
+            {
+                return ReferenceEquals(x, y)
+                       || (x.ServiceType == y.ServiceType && x.ImplementationType == y.ImplementationType && x.Lifetime == y.Lifetime);
+            }
+
+            public int GetHashCode(ServiceDescriptor obj)
+            {
+                var hashCode = 17;
+                hashCode = (hashCode * 7) + obj.ServiceType.GetHashCode();
+                hashCode = (hashCode * 7) + obj.ImplementationType.GetHashCode();
+                hashCode = (hashCode * 7) + obj.Lifetime.GetHashCode();
+
+                return hashCode;
+            }
         }
     }
 }
