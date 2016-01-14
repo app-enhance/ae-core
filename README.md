@@ -1,5 +1,5 @@
 # App Enhance
-[![Build Status](https://travis-ci.org/app-enhance/ae-core.svg)](https://travis-ci.org/app-enhance/ae-core)
+[![Build Status](https://travis-ci.org/app-enhance/ae-core.svg?branch=master)](https://travis-ci.org/app-enhance/ae-core)
 [![Build status](https://ci.appveyor.com/api/projects/status/yjktwfhrd9can0af/branch/master?svg=true)](https://ci.appveyor.com/project/Ermesx/ae-core/branch/master)
 
 This project helps to build better applications with small effort. It address 
